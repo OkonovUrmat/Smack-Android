@@ -43,4 +43,8 @@ class MainActivity : AppCompatActivity() {
     fun loginBtnNavClicked(view: View) {
 
     }
+
+    fun addChannelClicked(view: View) {
+
+    }
 }
