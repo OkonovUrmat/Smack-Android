@@ -1,9 +1,9 @@
 package com.android.smack_android
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loginCreateUserBtnClicked(view: View) {
-        val createUserIntent = Intent(this,CreateUserActivity::class.java)
+        val createUserIntent = Intent(this, CreateUserActivity::class.java)
         startActivity(createUserIntent)
     }
 }
