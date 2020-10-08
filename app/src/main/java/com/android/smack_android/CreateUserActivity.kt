@@ -3,6 +3,7 @@ package com.android.smack_android
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
 class CreateUserActivity : AppCompatActivity() {
@@ -25,6 +26,9 @@ class CreateUserActivity : AppCompatActivity() {
         } else {
             "dark$avatar"
         }
+
+        val resourceId = resources.getIdentifier(userAvatar,"drawable",packageName)
+        createAvatarImageView.setImageResource(resourceId)
     }
 
     fun generateBackgroundColorClick(view: View) {
