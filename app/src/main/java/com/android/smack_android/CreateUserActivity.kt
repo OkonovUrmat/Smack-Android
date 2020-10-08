@@ -1,5 +1,6 @@
 package com.android.smack_android
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +33,18 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun generateBackgroundColorClick(view: View) {
+        val random = Random()
+        val r = random.nextInt(255)
+        val g = random.nextInt(255)
+        val b = random.nextInt(255)
 
+        createAvatarImageView.setBackgroundColor(Color.rgb(r,g,b))
+
+        val savedR = r.toDouble() / 255
+        val savedG = g.toDouble() / 255
+        val savedB = b.toDouble() / 255
+
+        avatarColor = "[$savedR, $savedG, $savedB]"
     }
 
     fun createUserClick(view: View) {
