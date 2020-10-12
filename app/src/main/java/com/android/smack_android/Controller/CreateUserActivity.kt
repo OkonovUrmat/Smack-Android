@@ -29,7 +29,7 @@ class CreateUserActivity : AppCompatActivity() {
             "dark$avatar"
         }
 
-        val resourceId = resources.getIdentifier(userAvatar,"drawable",packageName)
+        val resourceId = resources.getIdentifier(userAvatar, "drawable", packageName)
         createAvatarImageView.setImageResource(resourceId)
     }
 
@@ -39,7 +39,7 @@ class CreateUserActivity : AppCompatActivity() {
         val g = random.nextInt(255)
         val b = random.nextInt(255)
 
-        createAvatarImageView.setBackgroundColor(Color.rgb(r,g,b))
+        createAvatarImageView.setBackgroundColor(Color.rgb(r, g, b))
 
         val savedR = r.toDouble() / 255
         val savedG = g.toDouble() / 255
