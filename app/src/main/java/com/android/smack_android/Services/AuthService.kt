@@ -1,6 +1,7 @@
 package com.android.smack_android.Services
 
 import android.content.Context
+import android.util.Log
 import com.android.smack_android.Utilities.URL_REGISTER
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -16,9 +17,10 @@ object AuthService {
         val requestBody = jsonBody.toString()
 
         val registerRequest = object : StringRequest(Method.POST, URL_REGISTER, Response.Listener {
-
-        }, Response.ErrorListener {
-
+            complete(true)
+        }, Response.ErrorListener { error ->
+            Log.d("ERROR", "Could not register user: $error")
+            complete(false)
         })
     }
 
