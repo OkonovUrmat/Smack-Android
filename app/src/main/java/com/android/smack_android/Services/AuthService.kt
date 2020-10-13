@@ -14,6 +14,12 @@ object AuthService {
         jsonBody.put("password", password)
 
         val requestBody = jsonBody.toString()
+
+        val registerRequest = object : StringRequest(Method.POST, URL_REGISTER, Response.Listener {
+
+        }, Response.ErrorListener {
+
+        })
     }
 
 }
