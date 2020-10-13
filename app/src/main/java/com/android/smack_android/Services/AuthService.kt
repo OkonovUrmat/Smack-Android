@@ -5,6 +5,7 @@ import android.util.Log
 import com.android.smack_android.Utilities.URL_REGISTER
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 object AuthService {
@@ -30,5 +31,6 @@ object AuthService {
                 return requestBody.toByteArray()
             }
         }
+        Volley.newRequestQueue(context).add(registerRequest)
     }
 }
