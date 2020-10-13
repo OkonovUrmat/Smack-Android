@@ -21,7 +21,9 @@ object AuthService {
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not register user: $error")
             complete(false)
-        })
-    }
+        }) {
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
 
 }
