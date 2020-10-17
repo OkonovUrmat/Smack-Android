@@ -59,5 +59,6 @@ object AuthService {
                     return requestBody.toByteArray()
                 }
             }
+        Volley.newRequestQueue(context).add(loginRequest)
     }
 }
