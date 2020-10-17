@@ -2,8 +2,10 @@ package com.android.smack_android.Services
 
 import android.content.Context
 import android.util.Log
+import com.android.smack_android.Utilities.URL_LOGIN
 import com.android.smack_android.Utilities.URL_REGISTER
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
@@ -39,5 +41,23 @@ object AuthService {
         jsonBody.put("password", password)
 
         val requestBody = jsonBody.toString()
+
+        val loginRequest =
+            object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
+                // this is where we parse the json object
+                complete(true)
+            }, Response.ErrorListener { error ->
+                // errors
+                Log.d("ERROR", "Could not login in: $error")
+                complete(false)
+            }) {
+                override fun getBodyContentType(): String {
+                    return "application/json; charset=utf-8"
+                }
+
+                override fun getBody(): ByteArray {
+                    return requestBody.toByteArray()
+                }
+            }
     }
 }
