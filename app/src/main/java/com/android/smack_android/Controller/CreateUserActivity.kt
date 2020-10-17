@@ -50,7 +50,7 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun createUserClick(view: View) {
-        AuthService.registerUser(this,"j@j.com","12345678") { complete ->
+        AuthService.registerUser(this, "j@j.com", "12345678") { complete ->
             if (complete) {
 
             }
