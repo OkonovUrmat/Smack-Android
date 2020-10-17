@@ -34,6 +34,10 @@ object AuthService {
     }
 
     fun loginUser(context: Context, email: String, password: String, complete: (Boolean) -> Unit) {
-        
+        val jsonBody = JSONObject()
+        jsonBody.put("email", email)
+        jsonBody.put("password", password)
+
+        val requestBody = jsonBody.toString()
     }
 }
