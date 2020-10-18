@@ -50,7 +50,7 @@ object AuthService {
         val loginRequest =
             object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
                 try {
-                    userEmail = response.getString("email")
+                    userEmail = response.getString("user")
                     authToken = response.getString("token")
                     isLoggedIn = true
                     complete(true)
