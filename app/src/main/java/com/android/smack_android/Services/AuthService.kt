@@ -11,12 +11,11 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 object AuthService {
+    var isLoggedIn = false
+    var userEmail = ""
+    var authToken = ""
+
     fun registerUser(context: Context, email: String, password: String, complete: (Boolean) -> Unit) {
-
-        var isLoggedIn = false
-        var userEmail = ""
-        var authToken = ""
-
         val jsonBody = JSONObject()
         jsonBody.put("email", email)
         jsonBody.put("password", password)
@@ -49,7 +48,9 @@ object AuthService {
 
         val loginRequest =
             object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
-                // this is where we parse the json object
+                userEmail = response.getString("email")
+                authToken = response.getString("token")
+                isLoggedIn = true
                 complete(true)
             }, Response.ErrorListener { error ->
                 // errors
