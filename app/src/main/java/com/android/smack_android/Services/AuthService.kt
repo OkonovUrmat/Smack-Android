@@ -12,6 +12,11 @@ import org.json.JSONObject
 
 object AuthService {
     fun registerUser(context: Context, email: String, password: String, complete: (Boolean) -> Unit) {
+
+        var isLoggedIn = false
+        var userEmail = ""
+        var authToken = ""
+
         val jsonBody = JSONObject()
         jsonBody.put("email", email)
         jsonBody.put("password", password)
