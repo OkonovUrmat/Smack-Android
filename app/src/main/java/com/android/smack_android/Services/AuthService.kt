@@ -73,4 +73,8 @@ object AuthService {
             }
         Volley.newRequestQueue(context).add(loginRequest)
     }
+
+    fun createUser(context: Context, name: String, email: String, avatarName: String, avatarColor: String, complete: (Boolean) -> Unit) {
+
+    }
 }
