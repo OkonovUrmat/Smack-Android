@@ -84,22 +84,23 @@ object AuthService {
 
         val requestBody = jsonBody.toString()
 
-        val createRequest = object : JsonObjectRequest(Method.POST, URL_CREATE_USER, null, Response.Listener { response ->
-            try {
-                UserDataServices.name = response.getString("name")
-                UserDataServices.email = response.getString("email")
-                UserDataServices.avatarName = response.getString("avatarName")
-                UserDataServices.avatarColor = response.getString("avatarColor")
-                UserDataServices.id = response.getString("_id")
-                complete(true)
-            } catch (e: JSONException) {
-                Log.d("JSON", "EXC" + e.localizedMessage)
+        val createRequest = object :
+            JsonObjectRequest(Method.POST, URL_CREATE_USER, null, Response.Listener { response ->
+                try {
+                    UserDataServices.name = response.getString("name")
+                    UserDataServices.email = response.getString("email")
+                    UserDataServices.avatarName = response.getString("avatarName")
+                    UserDataServices.avatarColor = response.getString("avatarColor")
+                    UserDataServices.id = response.getString("_id")
+                    complete(true)
+                } catch (e: JSONException) {
+                    Log.d("JSON", "EXC" + e.localizedMessage)
+                    complete(false)
+                }
+            }, Response.ErrorListener { error ->
+                Log.d("ERROR", "Could not add user: $error")
                 complete(false)
-            }
-        }, Response.ErrorListener {error ->
-            Log.d("ERROR", "Could not add user: $error")
-            complete(false)
-        }) {
+            }) {
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
             }
