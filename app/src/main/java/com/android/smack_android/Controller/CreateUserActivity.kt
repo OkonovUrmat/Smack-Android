@@ -68,4 +68,8 @@ class CreateUserActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun enableSpinner(enable: Boolean) {
+
+    }
 }
