@@ -51,6 +51,7 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun createUserClick(view: View) {
+        enableSpinner(true)
         val userName = createUserNameText.text.toString()
         val email = createEmailText.text.toString()
         val password = createPasswordText.text.toString()
@@ -60,6 +61,7 @@ class CreateUserActivity : AppCompatActivity() {
                     if (loginSuccess) {
                         AuthService.createUser(this,userName,email,userAvatar,avatarColor) { createSuccess ->
                             if (createSuccess) {
+                                enableSpinner(false)
                                 finish()
                             }
                         }
@@ -70,6 +72,16 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun enableSpinner(enable: Boolean) {
-
+        if (enable) {
+            createSpinner.visibility = View.VISIBLE
+            createUserBtn.isEnabled = false
+            createAvatarImageView.isEnabled = false
+            backgroundColorBtn.isEnabled = false
+        } else {
+            createSpinner.visibility = View.INVISIBLE
+            createUserBtn.isEnabled = true
+            createAvatarImageView.isEnabled = true
+            backgroundColorBtn.isEnabled = true
+        }
     }
 }
