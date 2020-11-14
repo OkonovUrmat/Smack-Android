@@ -71,6 +71,10 @@ class CreateUserActivity : AppCompatActivity() {
         }
     }
 
+    fun errorToast() {
+
+    }
+
     private fun enableSpinner(enable: Boolean) {
         if (enable) {
             createSpinner.visibility = View.VISIBLE
