@@ -3,6 +3,7 @@ package com.android.smack_android.Controller
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.smack_android.R
 import com.android.smack_android.Services.AuthService
@@ -67,12 +68,15 @@ class CreateUserActivity : AppCompatActivity() {
                         }
                     }
                 }
+            } else {
+                errorToast()
             }
         }
     }
 
     fun errorToast() {
-
+        Toast.makeText(this, "Something wrong, please try again. ", Toast.LENGTH_LONG).show()
+        enableSpinner(false)
     }
 
     private fun enableSpinner(enable: Boolean) {
