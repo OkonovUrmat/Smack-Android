@@ -56,21 +56,37 @@ class CreateUserActivity : AppCompatActivity() {
         val userName = createUserNameText.text.toString()
         val email = createEmailText.text.toString()
         val password = createPasswordText.text.toString()
-        AuthService.registerUser(this, email, password) { registerSuccess ->
-            if (registerSuccess) {
-                AuthService.loginUser(this, email, password) { loginSuccess ->
-                    if (loginSuccess) {
-                        AuthService.createUser(this,userName,email,userAvatar,avatarColor) { createSuccess ->
-                            if (createSuccess) {
-                                enableSpinner(false)
-                                finish()
+
+        if (userName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+            AuthService.registerUser(this, email, password) { registerSuccess ->
+                if (registerSuccess) {
+                    AuthService.loginUser(this, email, password) { loginSuccess ->
+                        if (loginSuccess) {
+                            AuthService.createUser(
+                                this,
+                                userName,
+                                email,
+                                userAvatar,
+                                avatarColor
+                            ) { createSuccess ->
+                                if (createSuccess) {
+                                    enableSpinner(false)
+                                    finish()
+                                }
                             }
                         }
                     }
+                } else {
+                    errorToast()
                 }
-            } else {
-                errorToast()
             }
+        } else {
+            Toast.makeText(
+                this,
+                "Make sure user name, email and password are filled in",
+                Toast.LENGTH_LONG
+            ).show()
+            enableSpinner(false)
         }
     }
 
