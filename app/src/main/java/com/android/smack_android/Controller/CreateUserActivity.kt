@@ -1,12 +1,15 @@
 package com.android.smack_android.Controller
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.android.smack_android.R
 import com.android.smack_android.Services.AuthService
+import com.android.smack_android.Utilities.BROADCAST_USER_DATA_CHANGE
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
@@ -70,6 +73,8 @@ class CreateUserActivity : AppCompatActivity() {
                                 avatarColor
                             ) { createSuccess ->
                                 if (createSuccess) {
+                                    val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
+                                    LocalBroadcastManager.getInstance(this).sendBroadcast(userDataChange)
                                     enableSpinner(false)
                                     finish()
                                 }
